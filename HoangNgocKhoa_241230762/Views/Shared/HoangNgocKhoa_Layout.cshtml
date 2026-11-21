@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hoàng Ngọc Khoa - Hàng hóa</title>
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="wrap">
+        <partial name="HoangNgocKhoa_Header" />
+        <div class="main">
+            <div class="content">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <partial name="HoangNgocKhoa_Footer" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

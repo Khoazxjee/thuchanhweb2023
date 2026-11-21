@@ -1,0 +1,31 @@
+@model IEnumerable<HangHoa>
+
+<div id="noiDungHangHoa">
+    <partial name="HoangNgocKhoa_MainContent" model="Model" />
+</div>
+
+@section Scripts {
+    <script>
+        $(function () {
+            let request = null;
+            $(".loc-loai-hang").on("click", function (event) {
+                event.preventDefault();
+                const link = this;
+                if (request) {
+                    request.abort();
+                }
+                request = $.get($(link).attr("data-url"))
+                    .done(function (html) {
+                        $("#noiDungHangHoa").html(html);
+                        $(".menu li").removeClass("active");
+                        $(link).closest("li").addClass("active");
+                    })
+                    .fail(function (xhr, status) {
+                        if (status !== "abort") {
+                            alert("Không tải được danh sách hàng hóa.");
+                        }
+                    });
+            });
+        });
+    </script>
+}
